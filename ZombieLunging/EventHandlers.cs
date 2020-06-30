@@ -40,7 +40,7 @@ namespace ZombieLunging
 			ev.Player.gameObject.AddComponent<CustomZombie>();
 		}
 
-		public void OnConsoleCommand(ConsoleCommandEvent ev)
+		public void OnConsoleCommand(EXILED.ConsoleCommandEvent ev)
 		{
 			if (ev.Player.GetRole() != RoleType.Scp0492) return;
 			if (ev.Command == "lunge")

@@ -34,8 +34,8 @@ namespace ZombieLunging
 			Events.SetClassEvent += new Events.SetClass(this.OnSetClass);
 
 			this.playerReferenceHub = this.GetComponent<ReferenceHub>();
-			this.scp207 = (Scp207)typeof(PlyMovementSync).GetField("_scp207", BindingFlags.Instance | BindingFlags.NonPublic).GetValue((object)this.playerReferenceHub.plyMovementSync);
-			this.sinkHole = (SinkHole)typeof(PlyMovementSync).GetField("_sinkhole", BindingFlags.Instance | BindingFlags.NonPublic).GetValue((object)this.playerReferenceHub.plyMovementSync);
+			this.scp207 = (Scp207)typeof(PlayerMovementSync).GetField("_scp207", BindingFlags.Instance | BindingFlags.NonPublic).GetValue((object)this.playerReferenceHub.playerMovementSync);
+			this.sinkHole = (SinkHole)typeof(PlayerMovementSync).GetField("_sinkhole", BindingFlags.Instance | BindingFlags.NonPublic).GetValue((object)this.playerReferenceHub.playerMovementSync);
 			this.sinkHole.slowAmount = Plugin.slowdownAmount;
 		}
 
@@ -107,7 +107,7 @@ namespace ZombieLunging
 			while ((double)waitedTime < (double)totalWaitTime)
 			{
 				if (!this.sinkHole.Enabled)
-					this.sinkHole.ServerEnable();
+					this.playerReferenceHub.playerEffectsController.EnableEffect<SinkHole>();
 				waitedTime += interval;
 				yield return Timing.WaitForSeconds(interval);
 			}
@@ -137,7 +137,7 @@ namespace ZombieLunging
 			while ((double)waitedTime < (double)totalWaitTime)
 			{
 				if (!this.scp207.Enabled)
-					this.scp207.ServerEnable();
+					this.playerReferenceHub.playerEffectsController.EnableEffect<Scp207>();
 				waitedTime += interval;
 				yield return Timing.WaitForSeconds(interval);
 			}
@@ -183,8 +183,8 @@ namespace ZombieLunging
 			Events.RoundRestartEvent += new Events.OnRoundRestart(this.OnRoundRestart);
 
 			this.playerReferenceHub = this.GetComponent<ReferenceHub>();
-			this.scp207 = (Scp207)typeof(PlyMovementSync).GetField("_scp207", BindingFlags.Instance | BindingFlags.NonPublic).GetValue((object)this.playerReferenceHub.plyMovementSync);
-			this.sinkHole = (SinkHole)typeof(PlyMovementSync).GetField("_sinkhole", BindingFlags.Instance | BindingFlags.NonPublic).GetValue((object)this.playerReferenceHub.plyMovementSync);
+			this.scp207 = (Scp207)typeof(PlayerMovementSync).GetField("_scp207", BindingFlags.Instance | BindingFlags.NonPublic).GetValue((object)this.playerReferenceHub.playerMovementSync);
+			this.sinkHole = (SinkHole)typeof(PlayerMovementSync).GetField("_sinkhole", BindingFlags.Instance | BindingFlags.NonPublic).GetValue((object)this.playerReferenceHub.playerMovementSync);
 			this.sinkHole.slowAmount = Plugin.slowdownAmount;
 		}
 
@@ -237,7 +237,7 @@ namespace ZombieLunging
 			while ((double)waitedTime < (double)totalWaitTime)
 			{
 				if (!this.sinkHole.Enabled)
-					this.sinkHole.ServerEnable();
+					this.playerReferenceHub.playerEffectsController.EnableEffect<SinkHole>();
 				waitedTime += interval;
 				yield return Timing.WaitForSeconds(interval);
 			}
@@ -251,7 +251,7 @@ namespace ZombieLunging
 			while ((double)waitedTime < (double)totalWaitTime)
 			{
 				if (!this.scp207.Enabled)
-					this.scp207.ServerEnable();
+					this.playerReferenceHub.playerEffectsController.EnableEffect<Scp207>();
 				waitedTime += interval;
 				yield return Timing.WaitForSeconds(interval);
 			}
